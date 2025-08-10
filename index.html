@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULJ@IU - Undergraduate Law Journal at Indiana University</title>
+    <meta name="description" content="Premier Undergraduate Legal Publication at Indiana University, fostering legal discourse and research since 2024. Entirely student-run and published.">
+    <meta name="keywords" content="law journal, undergraduate, Indiana University, legal research, student publication">
+    <link rel="canonical" href="https://yourusername.github.io/ulj-iu-website/">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --iu-crimson: #990000;
+            --iu-cream: #F7F2E8;
+            --iu-dark-red: #7A0000;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --white: #ffffff;
+            --light-gray: #f8f8f8;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--iu-crimson) 0%, var(--iu-dark-red) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--iu-cream);
+            border-bottom: 2px solid var(--iu-cream);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(153, 0, 0, 0.8), rgba(122, 0, 0, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F7F2E8" width="1200" height="600"/><path fill="%23990000" opacity="0.1" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .taglines {
+            margin-bottom: 2rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--iu-cream);
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--iu-cream);
+            color: var(--iu-crimson);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-section {
+            display: none;
+            padding: 4rem 0;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-section h2 {
+            color: var(--iu-crimson);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--iu-crimson);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--iu-crimson);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--iu-crimson);
+            margin-bottom: 1rem;
+        }
+
+        /* Masthead */
+        .masthead-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .position-card {
+            background: var(--iu-cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .name-card {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        .name-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Blog Posts */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-card h4 {
+            color: var(--iu-crimson);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Get Involved Section */
+        .get-involved-content {
+            background: var(--iu-cream);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .requirements-list {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .requirements-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .requirements-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            color: var(--iu-crimson);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--iu-crimson);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--iu-cream);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .get-involved-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">ULJ@IU</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                    <li><a href="#" onclick="showPage('masthead')" class="nav-link">Masthead</a></li>
+                    <li><a href="#" onclick="showPage('issues')" class="nav-link">Issues</a></li>
+                    <li><a href="#" onclick="showPage('blog')" class="nav-link">Blog</a></li>
+                    <li><a href="#" onclick="showPage('get-involved')" class="nav-link">Get Involved</a></li>
+                    <li><a href="#" onclick="showPage('contact')" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Undergraduate Law Journal</h1>
+                    <div class="taglines">
+                        <p class="tagline">Premier Undergraduate Legal Publication at Indiana University</p>
+                        <p class="tagline">Fostering Legal Discourse and Research Since 2024</p>
+                        <p class="tagline">Entirely Student-Run and Published</p>
+                    </div>
+                    <a href="#" onclick="showPage('issues')" class="cta-button">Read Our Latest Issue</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- What We Offer Section -->
+                <section style="padding: 4rem 0;">
+                    <h2 style="color: var(--iu-crimson); font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">What We Offer</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Legal Research</h3>
+                            <p>Publish cutting-edge undergraduate legal research and analysis on contemporary legal issues.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Student Community</h3>
+                            <p>Connect with like-minded students passionate about law, policy, and legal scholarship.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Publication Experience</h3>
+                            <p>Gain valuable experience in legal writing, editing, and academic publication processes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Latest Updates Section -->
+                <section style="padding: 4rem 0; background: var(--light-gray); margin: 2rem -2rem; padding-left: 2rem; padding-right: 2rem;">
+                    <h2 style="color: var(--iu-crimson); font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Latest Updates</h2>
+                    <div style="background: var(--white); border-radius: 15px; padding: 3rem; margin: 0 auto; max-width: 900px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: var(--text-dark); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">Fall 2025 Applications Opening Soon</h3>
+                        <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: var(--text-light);">
+                            We're excited to announce that applications for Fall 2025 membership will be opening soon. Stay tuned for more information about our call-out meetings and application process.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Masthead Page -->
+        <section id="masthead" class="page-section">
+            <div class="container">
+                <h2>Masthead</h2>
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h3 style="color: var(--iu-crimson); font-size: 1.8rem; margin-bottom: 0.5rem;">Volume I, Issue I</h3>
+                    <p>Meet the dedicated team behind the Undergraduate Law Journal at Indiana University.</p>
+                </div>
+                
+                <div class="masthead-grid">
+                    <div class="position-card">
+                        <h4 style="color: var(--iu-crimson);">Editor-in-Chief</h4>
+                        <p><strong>Hyunwook Dennis Lee</strong></p>
+                    </div>
+                    <div class="position-card">
+                        <h4 style="color: var(--iu-crimson);">Vice President</h4>
+                        <p><strong>Zachary Goldberg</strong></p>
+                    </div>
+                    <div class="position-card">
+                        <h4 style="color: var(--iu-crimson);">Senior Editor</h4>
+                        <p><strong>Valeria Colmenarez</strong></p>
+                    </div>
+                    <div class="position-card">
+                        <h4 style="color: var(--iu-crimson);">Faculty Advisor</h4>
+                        <p><strong>Tara Ali</strong></p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--iu-crimson); text-align: center; margin-bottom: 2rem;">Associate Editors</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+                        <div class="name-card">
+                            <p><strong>Allie Wiley</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Reese Wiley</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Brayden Dack</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Cara Roberge</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Madhuri Vamadevan</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Cecilia Buono</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Katrina Catalan</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--iu-crimson); text-align: center; margin-bottom: 2rem;">Staff Writers</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: center;">
+                        <div class="name-card">
+                            <p><strong>Anna Povinelli</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Henry Howe</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Trent Yeager</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Alex Emmanoilidis</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Sean Smith</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Tanish Javeria</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Zainab Syed</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Katherine Moon</strong></p>
+                        </div>
+                        <div class="name-card">
+                            <p><strong>Zoe Harris</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Issues Page -->
+        <section id="issues" class="page-section">
+            <div class="container">
+                <h2>Issues</h2>
+                <p style="text-align: center; margin-bottom: 3rem;">Explore our published volumes featuring outstanding undergraduate legal scholarship.</p>
+                
+                <!-- Featured Current Issue -->
+                <div style="background: var(--iu-cream); padding: 3rem; border-radius: 15px; margin-bottom: 3rem; text-align: center;">
+                    <h3 style="color: var(--iu-crimson); font-size: 2rem; margin-bottom: 1rem;">Latest Issue - Volume I, Issue 1</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;"><strong>Spring 2025</strong></p>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem;">Our inaugural issue features groundbreaking legal research by Indiana University undergraduate students, setting the foundation for future scholarship.</p>
+                    
+                    <div style="background: var(--white); padding: 2rem; border-radius: 10px; margin: 2rem 0; text-align: left;">
+                        <h4 style="color: var(--iu-crimson); margin-bottom: 1.5rem; text-align: center;">Featured Articles</h4>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"The Death of Legality and the Rise of Oligarchy: Navigating How Capitalistic Corruption Distorts Legal Systems"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Sean Smith</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">An examination of how economic disparity corrupts legal systems, exploring the systematic undermining of the rule of law by capitalistic interests.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"The Expansion and Constitutionality of Executive Orders"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Henry Howe</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">A study on the ministerial exception, analyzing the balance between protecting church autonomy and individual rights in employment law.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"The Expansion and Constitutionality of Executive Orders"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Trent Yeager</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Exploring the history and evolution of executive orders, examining their constitutional implications and impact on the separation of powers.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"The Obergefell Question: A Study on Legacy and Precedent"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Anna Povinelli</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">An analysis of the Obergefell v. Hodges decision, examining its legal foundations and addressing challenges to its precedent.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"Playing Through Pain: The Legal and Medical Consequences of Negligence in Football"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Alex Emmanoilidis</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Highlighting the shortcomings in football's approach to player health, examining legal responsibilities and medical malpractice in sports.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"Equality 101: Tracing The Path from the American Dream to DEI"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Zoe Harris</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Analyzing the evolution of equality and equal opportunity, arguing for the legal foundation and necessity of DEI programs.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 0;">
+                            <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">"Expanding the Presidential Pardon"</h5>
+                            <p style="margin-bottom: 0.5rem;"><strong>By Tanish Javeria</strong></p>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">Examining the evolution of presidential pardon powers, analyzing recent politicized uses and potential constitutional amendments for oversight.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://drive.google.com/file/d/1gPLr25h_T-fN0kdrG2I_e9VOghtoVeD_/view?usp=sharing" target="_blank" style="display: inline-block; background: var(--iu-crimson); color: var(--white); padding: 1rem 2rem; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 1rem;">Download Full Issue (PDF)</a>
+                </div>
+                
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-card-content">
+                            <h4>Letter from the Editors</h4>
+                            <div class="blog-meta">Volume I, Issue 1 • Spring 2025</div>
+                            <p>"On behalf of our editorial staff, we are pleased to present an idea that came to light. The inaugural volume and issue of the Undergraduate Law Journal at Indiana University."</p>
+                            <a href="#" style="color: var(--iu-crimson); font-weight: bold;">Read Letter →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-top: 3rem; text-align: center;">
+                    <h3 style="color: var(--iu-crimson); margin-bottom: 1rem;">Submit Your Work</h3>
+                    <p>We welcome submissions from all Indiana University undergraduate students interested in legal scholarship. Contact us for submission guidelines and deadlines for future issues.</p>
+                    <p style="margin-top: 1rem;"><strong>Email:</strong> undergradlawjournaliu@gmail.com</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Page -->
+        <section id="blog" class="page-section">
+            <div class="container">
+                <h2>Blog</h2>
+                <p style="text-align: center; margin-bottom: 3rem;">Stay informed with our latest legal insights, analysis, and commentary on current events.</p>
+                
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-card-content">
+                            <h4>Defending Mother Nature: Climate Change Litigation and Its Impact on Global Environmental Systems</h4>
+                            <div class="blog-meta">By Sean Smith (Indiana University) • Edited by Valeria Colmenarez</div>
+                            <p>Climate change litigation has emerged as a powerful tool for holding governments and corporations accountable for their contributions to global warming and environmental degradation. This article examines the evolving landscape of climate change litigation, highlighting key cases and legal principles that have shaped this field.</p>
+                            
+                            <div style="margin: 1.5rem 0; padding: 1rem; background: var(--light-gray); border-radius: 5px;">
+                                <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">Legal Framework</h5>
+                                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Climate change litigation intersects with multiple areas of law, including environmental law, human rights law, and tort law. The United Nations Framework Convention on Climate Change (UNFCCC) and the Paris Agreement serve as international foundations, while national statutes like the Clean Air Act establish domestic precedent.</p>
+                                
+                                <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">Key Cases</h5>
+                                <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>Urgenda Foundation v. The Netherlands (2015):</strong> Dutch Supreme Court held the government accountable for not meeting emission reduction targets, citing obligations under the European Convention on Human Rights.</p>
+                                <p style="font-size: 0.9rem; margin-bottom: 1rem;"><strong>Juliana v. United States (2015):</strong> Young advocates argued that the government's failure to address climate change violated their constitutional rights, claiming violations of substantive due process and equal protection.</p>
+                                
+                                <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">Emerging Trends</h5>
+                                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A growing trend in climate litigation is the use of human rights-based arguments. The Torres Strait Islanders' petition to the UN Human Rights Committee exemplifies this approach, claiming Australia's insufficient climate action threatened their culture and way of life.</p>
+                                
+                                <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">Corporate Accountability</h5>
+                                <p style="font-size: 0.9rem;">Fossil fuel companies are increasingly being held responsible by states for misleading the public about climate risks. Cases from New York and California demonstrate this trend, while issues like greenwashing continue to challenge corporate transparency.</p>
+                            </div>
+                            
+                            <div style="margin: 1.5rem 0; padding: 1rem; background: var(--iu-cream); border-radius: 5px;">
+                                <h5 style="color: var(--iu-crimson); margin-bottom: 0.5rem;">Recommendations for Reform</h5>
+                                <ul style="margin-left: 1rem; font-size: 0.9rem;">
+                                    <li>Strengthen legal frameworks to hold corporations and governments accountable</li>
+                                    <li>Introduce stronger reporting and transparency regulations</li>
+                                    <li>Establish binding international commitments for emissions reductions</li>
+                                    <li>Reform international legal frameworks for climate accountability</li>
+                                </ul>
+                            </div>
+                            
+                            <p style="font-style: italic; margin-top: 1.5rem;">"Climate change litigation is rapidly evolving as an essential mechanism for addressing the global climate crisis. The courts are now responsible for grappling with the complexities of causation and accountability to protect our natural world and our own livelihoods."</p>
+                            
+                            <a href="#" onclick="showPage('blog-article')" style="color: var(--iu-crimson); font-weight: bold; margin-top: 1rem; display: inline-block;">Read Full Article →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved Page -->
+        <section id="get-involved" class="page-section">
+            <div class="container">
+                <h2>Get Involved</h2>
+                
+                <div class="get-involved-content">
+                    <h3 style="color: var(--iu-crimson); margin-bottom: 1rem; text-align: center;">Interested in joining the ULJ@IU?</h3>
+                    <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Thank you for your interest in joining ULJ @ IU!</p>
+                    
+                    <div style="background: var(--white); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                        <h4 style="color: var(--iu-crimson); margin-bottom: 1rem;">Fall 2025 Applications</h4>
+                        <p><strong>Applications for Fall 2025 membership will open soon.</strong></p>
+                        <p>More information, including deadlines and application materials, will be posted here and on our social media pages in the coming weeks.</p>
+                        <p>We host call-out meetings near the beginning of each semester to introduce our organization and provide an overview of the application process.</p>
+                        <p style="margin-top: 1rem;"><strong>Call-Out Meeting for Fall 2025 Membership: TBA</strong></p>
+                    </div>
+
+                    <div class="requirements-list">
+                        <h4 style="color: var(--iu-crimson); margin-bottom: 1rem;">A complete application typically includes:</h4>
+                        <ul>
+                            <li>A writing sample (law-related preferred, but not required)</li>
+                            <li>Personal information (name, class year, school, major(s)/minor(s), email)</li>
+                            <li>Resume</li>
+                            <li>Desired position(s)</li>
+                            <li>Responses to short-answer questions</li>
+                        </ul>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <p style="font-style: italic; color: var(--text-light);">Follow us on social media for the latest updates on applications and events!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Article Page -->
+        <section id="blog-article" class="page-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <a href="#" onclick="showPage('blog')" style="color: var(--iu-crimson); text-decoration: none;">← Back to Blog</a>
+                </div>
+                
+                <article style="max-width: 800px; margin: 0 auto;">
+                    <h1 style="color: var(--iu-crimson); margin-bottom: 1rem;">Defending Mother Nature: Climate Change Litigation and Its Impact on Global Environmental Systems</h1>
+                    <div style="margin-bottom: 2rem; text-align: center; color: var(--text-light);">
+                        <p><strong>By Sean Smith</strong> (Indiana University) • <strong>Edited by Valeria Colmenarez</strong></p>
+                    </div>
+
+                    <div style="line-height: 1.8; font-size: 1.1rem;">
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Introduction</h2>
+                        <p>Climate change litigation has emerged as a powerful tool for holding governments and corporations accountable for their contributions to global warming and environmental degradation. The impacts of climate change have become increasingly severe, as corporate greed and governmental ignorance have only accelerated the damage of this crisis. Courts around the world are being called upon to address complex legal questions regarding responsibility and liability and are seemingly the last defenders of the natural world. This article examines the evolving landscape of climate change litigation, highlighting key cases and legal principles that have shaped this field.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Legal Framework</h2>
+                        <p>Climate change litigation refers to legal actions taken to address and combat the impacts of climate change. This form of litigation often intersects with multiple areas of law, including environmental law, human rights law, and tort law. The United Nations Framework Convention on Climate Change (UNFCCC) is an international treaty that aims to reduce greenhouse gas emissions and enhance global resilience to climate impacts. The Paris Agreement is an extension of the UNFCCC and sets non-binding climate targets and obligations for nations to follow. National environmental statutes such as the Clean Air Act in the United States also serve to protect the natural environment from abhorrent offenders by establishing precedent that compel industries to limit pollution, adhere to emissions standards, and take responsibility for their environmental impact, thus promoting a healthier, more sustainable future for all.</p>
+                        
+                        <p>Human rights arguments that claim that inadequate climate action violates the right to life and the right to a healthy environment are incredibly compelling and serve as a powerful moral and legal foundation for holding governments and corporations accountable.</p>
+                        
+                        <p>Revising, expanding, and applying these frameworks are of the utmost importance if we wish to protect our Earth from the evolving challenges of environmental degradation (which is the deterioration of the environment through depletion of resources such as quality of air, water and soil; the destruction of ecosystems; habitat destruction; the extinction of wildlife; and pollution). Some of the most reprehensible examples of this form of destruction have been perpetuated by corporations and governments alike—from oil spills that destroy marine ecosystems and resource mining that leaves entire habitats barren, to deforestation driven by agribusiness and toxic waste dumping that poisons water supplies. The consequences are catastrophic, and failing to address these growing concerns will only exacerbate the threat.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Key Cases and Precedents</h2>
+                        <p>A landmark case that shows the court's willingness to hold perpetrators accountable for environmental degradation is <em>Urgenda Foundation v. The Netherlands</em> (2015), where the Dutch Supreme Court held the government accountable for not meeting emission reduction targets, citing obligations under the European Convention on Human Rights. Another significant case is <em>Juliana v. United States</em> (2015), where young advocates argued that the government's failure to address climate change violated their constitutional rights. The plaintiffs claimed that the government violated their substantive due process rights by depriving them of life, liberty, and property without due process of law. They also argued that the government's actions disproportionately harmed young people and people living in more sensitive environs, which violates the Equal Protection Clause. Though ultimately dismissed, the case sparked widespread debate on governmental responsibility in regulating the environment.</p>
+                        
+                        <p>These cases exemplify the growing concerns in the legal field towards environmental claims. The government's dereliction has spurred the commonwealth into advocating for themselves in the space that is most available to them — the judicial system — seeking justice and recompense for the sinister and monstrous consequences of unchecked corporate malfeasance that has induced environmental degradation. If governments continue to lay by the wayside on this issue, more damning events will take place—like the Chevron-Texaco incident in Ecuador, where the company dumped billions of gallons of toxic waste into rivers, poisoning water sources and causing widespread illness and environmental degradation among Indigenous communities; like the Shell Oil disasters in the Niger Delta, where the company's extraction of oil has led to relentless oil spills, gas flaring, and contamination of vital water sources—devastating local communities and causing major health issues; and like the Volkswagen Emissions Scandal, where the company deliberately installed "defeat devices" in diesel engines to cheat emissions tests, allowing their vehicles to emit over 40 times the legal limit of nitrogen oxides. Failing to act swiftly and deliberately to quell this form of predation will lead to even more of these catastrophes.</p>
+                        
+                        <p>More cases such as those described above must be brought to the forefront of the judicial system in order to secure a more sustainable and livable future for all. The courts are one of the few institutions that have the power to hold both the government and corporations accountable for their reprehensible and heinous actions (such as cutting corners on environmental safety measures, incentivizing degradation through economic benefits, and deliberate ignorance for environmental standards) and must therefore assume the responsibility of defending Mother Nature.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Emerging Trends</h2>
+                        <p>A growing trend in climate litigation is the use of human rights-based arguments. For example, the Torres Strait Islanders' petition to the United Nations Human Rights Committee claimed that Australia's insufficient climate action threatened their culture and way of life, in violation of international human rights norms. Additionally, fossil fuel companies are being held responsible by states for misleading the populace about the risks of climate change, as seen in cases brought by New York and California. Continuing to hold corporations and governments accountable through human rights frameworks emphasizes the ethical dimensions of environmental harm and strengthens the legal foundation for climate justice. Lingering on environmental action until it affects a government's own commonwealth demonstrates the tactless and myopic nature of today's world.</p>
+                        
+                        <p>Corporations have also started to incorporate sustainable business practices due to the increased pressure from consumers to do so. Though incredibly powerful and necessary, this form of advocacy still does not do enough to reverse the effects of climate change. Protestors in Canada have long called for governmental action to address the oil extraction in the Tar Sands, and the climate disasters that have ensued from this practice. Because these oil companies don't deal in consumer goods, it is near impossible to boycott these practices and, thus far, the Canadian government seems reluctant to take any action.</p>
+                        
+                        <p>Another issue that has been borne out of climate change is greenwashing (the practice of making a product, policy, or activity seem more environmentally friendly than it actually is). This practice has become incredibly prominent as once again corporations have abused their limited liability and deceived their consumers in the pursuit of their gluttonous desires of exorbitant wealth— what a shock.</p>
+                        
+                        <p>As Dr. Martin Luther King Jr. wrote; "Injustice anywhere is a threat to justice everywhere". Climate justice cannot be isolated to specific regions or singular incidents. This issue requires a comprehensive, global response if we wish to assuage the effects of climate change.</p>
+                        
+                        <p>The implacable force of greed has continued to corrupt those in positions of power to manipulate the environment to accomplish their most perverted desires. Reform in this area is necessary so as to thwart these indefensible actors.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Recommendations for Reform</h2>
+                        <p>Continued litigation in this field is paramount in protecting the natural world. Courts must be given the jurisdiction and power to litigate environmental cases in order to hold corporations, governments, and private actors accountable for their actions. Strengthening legal frameworks ensures that those responsible for environmental harm are punished for their exploitations of the natural world and eliminates the loopholes that are currently available for them to freely do so. More effective enforcement of environmental protections deters further violations. Whilst it may not be possible to reverse the damage that has already been done, climate change litigation gives us the opportunity to quell future devastation. Ultimately, the law must serve as a critical tool in safeguarding our planet for future generations.</p>
+                        
+                        <p>Revising statutes and frameworks that are already in place is a necessary step to address the ever-changing threats of climate change. Scientific data must be listened to and taken into account to ensure that legislation is actively driven by evidence-based solutions.</p>
+                        
+                        <p>Introducing stronger reporting and transparency regulations that make corporations provide verifiable data on their environmental impact and sustainability efforts will aid in combating the evils of greenwashing and will hold corporations accountable for their reprehensible deeds. Those found guilty of misleading consumers about their environmental practices should face severe penalties to deter future offenses.</p>
+                        
+                        <p>Climate change is a global issue that does not discriminate. Coordinated international action is required to address this crisis. Nations must come together to establish binding commitments for emissions reductions and climate adaptation measures. International legal frameworks should be reformed in order to ensure that nations are held accountable for failing to meet their climate obligations.</p>
+                        
+                        <p>Should these recommendations be incorporated into governmental and corporate policies, there is a chance that environmental destruction can be significantly reduced, leading to healthier ecosystems and more sustainable living environments for all. We can foster a safer and more resilient world if we prioritize these changes—but both governments and corporations must implement these strategies, and consistently expand upon them, in order to mitigate the long-term impacts of pollution and climate change.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Challenges and Implications</h2>
+                        <p>Despite the success that many courts have faced in punishing those that have chosen to exploit our environment and, in turn, human lives, full remediation cannot be done without the participation of policymakers. And, of course, issues of justiciability, standing, and attributing specific punishments to perpetrators still remain rampant, as seen in cases such as <em>Juliana v. United States</em>, where the 9th circuit deemed that courts do not have the power to order remedies that are designed to address issues of the climate. However, the increasing frequency and intensity of climate-related disasters are pressuring courts and states to reevaluate their stance on environmental accountability.</p>
+                        
+                        <p>Mitigating the destruction that will inevitably take place if the recommendations made above are not followed is incumbent upon all of us, for there is no reversing the damage that has already been done. The sinful and abominable forces of greed and power have done irreparable harm to the environment, but it is still possible to save the natural world from even more devastation if we choose to act now, with urgency, determination, and an unwavering commitment to sustainability.</p>
+
+                        <h2 style="color: var(--iu-crimson); margin-top: 2rem; margin-bottom: 1rem;">Conclusion</h2>
+                        <p>Climate change litigation is rapidly evolving as an essential mechanism for addressing the global climate crisis. The courts are now responsible for grappling with the complexities of causation and accountability to protect our natural world and our own livelihoods — rather than the government, which is ironic given that protecting the populace is the government's central purpose. The outcomes of these cases will shape the future of environmental governance and human rights protection. Continued advocacy and innovative legal arguments are our only options for advancing climate justice in an era of unprecedented ecological risk.</p>
+                        
+                        <p>The UN Environment Programme estimated that 12.6 million people across the globe died due to the effects of climate change and environmental degradation in 2012. Projections indicate that the amount of deaths per year due to climate change is expected to grow exponentially within the coming years—blood is in the air and it will continue to seep into the Earth if nothing is done.</p>
+                        
+                        <p>Profits and power are now valued more greatly than human security. The death of the environment can undeniably be traced to human hands. We know the causes and effects of climate change; we are educated on the destruction that occurs in ecosystems and communities alike — our chosen ignorance to this crisis cannot, and will not, be forgiven. Those that have exploited nature for their own personal gain should be ashamed and guilt-ridden, for it is truly a disgrace that it is my generation that has now been left to inherit an unparalleled burden of having to save our world from the iniquity of our forebears.</p>
+                        
+                        <p>Our lives are wholly contingent on the wellbeing of the environment, and ignoring the issue of climate change will render capital punishment to all.</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                        <a href="#" onclick="showPage('blog')" style="color: var(--iu-crimson); text-decoration: none; font-weight: bold;">← Back to Blog</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p style="text-align: center; margin-bottom: 3rem;">Get in touch with the Undergraduate Law Journal at Indiana University.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><strong>undergradlawjournaliu@gmail.com</strong></p>
+                        <p>For inquiries about submissions, membership, or general questions about ULJ@IU.</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Social Media</h3>
+                        <p><strong>@ulj_iu</strong></p>
+                        <p>Follow us on Instagram for updates, announcements, and behind-the-scenes content.</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-university"></i>
+                        <h3>Location</h3>
+                        <p><strong>Indiana University</strong></p>
+                        <p>Bloomington, Indiana</p>
+                        <p>Serving the undergraduate community with excellence in legal scholarship.</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--iu-cream); padding: 2rem; border-radius: 8px; margin-top: 3rem; text-align: center;">
+                    <h3 style="color: var(--iu-crimson); margin-bottom: 1rem;">Questions?</h3>
+                    <p>Whether you're interested in joining our team, submitting an article, or learning more about our mission, we'd love to hear from you. Reach out via email or connect with us on social media!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Undergraduate Law Journal at Indiana University. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/ulj_iu" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:undergradlawjournaliu@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">
+                Premier Undergraduate Legal Publication at Indiana University<br>
+                Fostering Legal Discourse and Research Since 2024 • Entirely Student-Run and Published
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Mobile menu toggle (for future implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
